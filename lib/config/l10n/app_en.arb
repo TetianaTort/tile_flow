@@ -2,5 +2,7 @@
   "@@locale": "en",
   "signInScreenTitle": "Sign in",
   "homeScreenTitle":"Markup Test",
-  "continueBtn": "Continue"
+  "continueBtn": "Continue",
+  "loginTitle": "Login",
+  "passwordTitle": "Password"
 }

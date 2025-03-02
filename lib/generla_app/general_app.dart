@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tile_flow/config/l10n/app_localizations.dart';
 import 'package:tile_flow/config/router/router.dart';
 import 'package:tile_flow/config/theme/app_theme.dart';
 

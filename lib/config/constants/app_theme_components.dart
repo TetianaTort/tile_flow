@@ -62,6 +62,18 @@ class AppThemeComponents {
         ),
         floatingLabelStyle:
             AppTextStyles.bodyMedium.copyWith(color: AppColors.seed),
+        errorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.blue,
+            width: Dimensions.widthM,
+          ),
+        ),
+        focusedErrorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.blue,
+            width: Dimensions.widthM,
+          ),
+        ),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
             color: Colors.blue,
@@ -74,5 +86,9 @@ class AppThemeComponents {
             width: Dimensions.widthM,
           ),
         ),
+      );
+  ProgressIndicatorThemeData get progressIndicatorTheme =>
+      const ProgressIndicatorThemeData(
+        color: Colors.white,
       );
 }

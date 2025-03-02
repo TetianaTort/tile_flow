@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tile_flow/config/constants/injectable_environments.dart';
+import 'package:tile_flow/core/di/service_locator.dart';
 import 'package:tile_flow/core/helpers/log_helper.dart';
-import 'package:tile_flow/generla_app/general_app.dart';
+import 'package:tile_flow/generla_app/general_app_wrapper.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await configureDependencies(TileFlowEnv.dev);
+
   Bloc.observer = MyBlocObserver();
-  runApp(const GeneralApp());
+
+  runApp(const GeneralAppWrapper());
 }
 
 class MyBlocObserver extends BlocObserver {
