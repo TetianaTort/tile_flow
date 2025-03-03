@@ -6,7 +6,7 @@ import 'package:tile_flow/config/constants/dimensions.dart';
 class AppThemeComponents {
   AppBarTheme get appBarLight => const AppBarTheme(
         color: AppColors.seed,
-        elevation: 4,
+        elevation: Dimensions.elevation,
         shadowColor: Colors.black,
         titleTextStyle: AppTextStyles.headlineSmall,
       );
@@ -52,7 +52,8 @@ class AppThemeComponents {
     ),
   );
 
-  TextSelectionThemeData get textSelectionTheme => const TextSelectionThemeData(
+  TextSelectionThemeData get appTextSelectionTheme =>
+      const TextSelectionThemeData(
         cursorColor: AppColors.seed,
       );
 
@@ -87,8 +88,17 @@ class AppThemeComponents {
           ),
         ),
       );
-  ProgressIndicatorThemeData get progressIndicatorTheme =>
+
+  ProgressIndicatorThemeData get appProgressIndicatorTheme =>
       const ProgressIndicatorThemeData(
         color: Colors.white,
+      );
+
+  IconThemeData get appIconTheme => const IconThemeData(color: Colors.white);
+
+  IconButtonThemeData get appIconButtonTheme => IconButtonThemeData(
+        style: ButtonStyle(
+          iconColor: WidgetStateProperty.all(Colors.white),
+        ),
       );
 }

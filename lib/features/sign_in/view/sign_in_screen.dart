@@ -6,6 +6,7 @@ import 'package:tile_flow/config/constants/dimensions.dart';
 import 'package:tile_flow/config/l10n/app_localizations.dart';
 import 'package:tile_flow/core/di/service_locator.dart';
 import 'package:tile_flow/generla_app/auth/auth_bloc.dart';
+import 'package:tile_flow/utils/form_validator.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -24,8 +25,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context);
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -50,7 +50,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Align(
                           child: SvgPicture.asset(
                             AppImages.logo,
-                            width: _isVertical(width, height) ? width : height,
+                            width: _isVertical(size.width, size.height)
+                                ? size.width
+                                : size.height,
                           ),
                         ),
                       ),
@@ -72,24 +74,16 @@ class _SignInScreenState extends State<SignInScreen> {
                                   decoration: InputDecoration(
                                     labelText: locale.loginTitle,
                                   ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return '';
-                                    }
-                                    return null;
-                                  },
+                                  validator: (value) =>
+                                      baseValidator(value) ? null : '',
                                 ),
                                 TextFormField(
                                   controller: _passwordController,
                                   decoration: InputDecoration(
                                     labelText: locale.passwordTitle,
                                   ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return '';
-                                    }
-                                    return null;
-                                  },
+                                  validator: (value) =>
+                                      baseValidator(value) ? null : '',
                                 ),
                               ],
                             ),
@@ -98,12 +92,12 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       Flexible(
                         child: Align(
-                          alignment: _isVertical(width, height)
+                          alignment: _isVertical(size.width, size.height)
                               ? Alignment.bottomCenter
                               : Alignment.center,
                           child: BlocBuilder<AuthBloc, AuthState>(
                             builder: (context, state) => SizedBox(
-                              width: 90,
+                              width: Dimensions.spacerL,
                               child: ElevatedButton(
                                 onPressed: _isValid
                                     ? () => sl<AuthBloc>().add(
@@ -112,7 +106,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     : null,
                                 child: state.maybeWhen(
                                   authorization: () => Transform.scale(
-                                    scale: 0.7,
+                                    scale: Dimensions.scaleM,
                                     child: const CircularProgressIndicator(),
                                   ),
                                   orElse: () => Text(locale.continueBtn),

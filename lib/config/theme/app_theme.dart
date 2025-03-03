@@ -13,6 +13,8 @@ ThemeData get lightTheme => ThemeData(
       textTheme: _themeComponents.apptTextTheme,
       elevatedButtonTheme: _themeComponents.appElevatedButtonTheme,
       inputDecorationTheme: _themeComponents.appInputDecorationTheme,
-      textSelectionTheme: _themeComponents.textSelectionTheme,
-      progressIndicatorTheme: _themeComponents.progressIndicatorTheme,
+      textSelectionTheme: _themeComponents.appTextSelectionTheme,
+      progressIndicatorTheme: _themeComponents.appProgressIndicatorTheme,
+      iconTheme: _themeComponents.appIconTheme,
+      iconButtonTheme: _themeComponents.appIconButtonTheme,
     );

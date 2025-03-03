@@ -1,7 +1,9 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tile_flow/config/router/page_routes.dart';
 import 'package:tile_flow/config/router/router_notifire.dart';
 import 'package:tile_flow/core/di/service_locator.dart';
+import 'package:tile_flow/features/home/items_bloc/items_bloc.dart';
 import 'package:tile_flow/features/home/view/home_screen.dart';
 import 'package:tile_flow/features/sign_in/view/sign_in_screen.dart';
 import 'package:tile_flow/generla_app/auth/auth_bloc.dart';
@@ -18,7 +20,10 @@ final router = GoRouter(
     GoRoute(
       name: AppNamedRoutes.home,
       path: AppRoutes.home,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => ItemsBloc(),
+        child: const HomeScreen(),
+      ),
     ),
   ],
   refreshListenable: GoRouterRefreshStream(sl<AuthBloc>().stream),
