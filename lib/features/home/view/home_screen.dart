@@ -74,8 +74,8 @@ class HomeScreen extends StatelessWidget {
                         child: SvgPicture.asset(
                           AppImages.logo,
                           width: _isVertical(size.width, size.height)
-                              ? size.width.clamp(0, 375)
-                              : size.height.clamp(0, 375),
+                              ? size.width.clamp(0, Dimensions.imageSizeL)
+                              : size.height.clamp(0, Dimensions.imageSizeL),
                         ),
                       ),
                     ),
